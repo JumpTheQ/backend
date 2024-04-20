@@ -17,7 +17,8 @@ class Section extends Model
      */
     protected $fillable = [
         'content',
-        'version'
+        'version',
+        'user_id'
     ];
 
     public function user()
@@ -28,5 +29,10 @@ class Section extends Model
     public function sectionable()
     {
         return $this->morphTo();
+    }
+
+    public function prompts()
+    {
+        return $this->morphMany(Prompt::class, 'promptable');
     }
 }

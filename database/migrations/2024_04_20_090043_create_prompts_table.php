@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('prompts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->longText('content');
-            $table->string('promptable_type');
-            $table->foreignUuid('promptable_id');
+            $table->string('promptable_type')->nullable();
+            $table->foreignUuid('promptable_id')->nullable();
             $table->foreignUuid('user_id');
             $table->foreignUuid('application_id');
             $table->timestamps();

@@ -29,6 +29,11 @@ class Resume extends Model
 
     public function sections()
     {
-        return $this->morphToMany(Section::class, 'sectionable');
+        return $this->morphMany(Section::class, 'sectionable');
+    }
+
+    public function prompts()
+    {
+        return $this->morphMany(Prompt::class, 'promptable');
     }
 }

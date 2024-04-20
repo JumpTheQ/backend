@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Application;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +19,8 @@ class CoverLetterFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => UserFactory::class,
-            'application_id' => ApplicationFactory::class
+            'user_id' => User::factory(),
+            'application_id' => Application::factory()
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,7 @@ class SectionFactory extends Factory
         return [
             'content' => fake()->paragraph(),
             'version' => fake()->randomNumber(),
-            'user_id' => UserFactory::class
+            'user_id' => User::factory()
         ];
     }
 }

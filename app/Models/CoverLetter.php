@@ -31,4 +31,9 @@ class CoverLetter extends Model
     {
         return $this->morphMany(Section::class, 'sectionable');
     }
+
+    public function prompts()
+    {
+        return $this->morphMany(Prompt::class, 'promptable');
+    }
 }

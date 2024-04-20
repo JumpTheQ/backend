@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +21,8 @@ class ApplicationFactory extends Factory
         return [
             'name' => fake()->jobTitle(),
             'description' => fake()->paragraph(),
-            'company_id' => CompanyFactory::class,
-            'user_id' => UserFactory::class
+            'company_id' => Company::factory(),
+            'user_id' => User::factory()
         ];
     }
 }
