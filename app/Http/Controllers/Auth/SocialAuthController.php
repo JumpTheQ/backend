@@ -23,6 +23,7 @@ class SocialAuthController extends Controller
         ], [
             'email_verified_at' => now(),
             'name' => $providerUser->getName(),
+            'avatar_url' => $providerUser->getAvatar()
         ]);
 
         Auth::login($user, true);

@@ -19,12 +19,12 @@ class ResumeController extends Controller
 
     public function show(Resume $resume)
     {
-        return view('resume', compact('resume'));
+        return view('resume', ['resume' => $resume, 'user' => auth()->user()]);
     }
 
     public function download(Resume $resume)
     {
-        $pdf = Pdf::loadView('resume', compact('resume'))->download('resume.pdf');
+        $pdf = Pdf::loadView('resume', ['resume' => $resume, 'user' => auth()->user()])->download('resume.pdf');
 
         return response($pdf, 200, ['Content-Type' => 'application/pdf']);
     }
