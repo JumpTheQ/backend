@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\HandlePromptAction;
 use App\Http\Requests\StorePromptRequest;
 use App\Http\Requests\UpdatePromptRequest;
 use App\Http\Resources\PromptResource;
@@ -24,11 +25,14 @@ class PromptController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePromptRequest $request, Application $application)
+    public function store(StorePromptRequest $request, Application $application, HandlePromptAction $handlePromptAction)
     {
         Gate::authorize('create', $application);
 
+        /** @var Prompt $prompt */
         $prompt = $application->prompts()->create($request->validated());
+
+        $handlePromptAction($prompt);
 
         return new PromptResource($prompt);
     }
@@ -37,11 +41,13 @@ class PromptController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePromptRequest $request, Prompt $prompt)
+    public function update(UpdatePromptRequest $request, Prompt $prompt, HandlePromptAction $handlePromptAction)
     {
         Gate::authorize('update', $prompt);
 
         $prompt->update($request->validated());
+
+        $handlePromptAction($prompt);
 
         return new PromptResource($prompt);
     }

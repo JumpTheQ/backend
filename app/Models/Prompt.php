@@ -2,10 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\UuidForPrimaryKeyTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Prompt extends Model
 {
-    use HasFactory;
+    use UuidForPrimaryKeyTrait;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'content'
+    ];
+
+    public function promptable()
+    {
+        return $this->morphTo();
+    }
 }

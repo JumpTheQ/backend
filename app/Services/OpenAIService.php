@@ -15,7 +15,7 @@ class OpenAIService
 
     public function prompt(string $content)
     {
-        return OpenAI::chat()->create([
+        $response = OpenAI::chat()->create([
             'model' => $this->model,
             'messages' => [
                 [
@@ -24,5 +24,7 @@ class OpenAIService
                 ],
             ],
         ]);
+
+        return $response->choices[0]->message->content;
     }
 }
