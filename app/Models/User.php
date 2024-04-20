@@ -36,6 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    protected $casts = [
+        'skills' => 'json',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
