@@ -36,7 +36,7 @@ class HandleApplicationSavedAction
 
         $userAbout = $application->user->about;
         $userAmbitions = $application->user->ambitions;
-        $userSkills = join($application->user->skills);
+        $userSkills = join(' ', $application->user->skills);
         $applicationKeywords = join(' ', $keywords);
 
         $coverLetterPromptContent = <<<END
