@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
 use App\Http\Resources\SectionResource;
 use App\Models\Section;
@@ -10,28 +9,6 @@ use Illuminate\Support\Facades\Gate;
 
 class SectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        Gate::authorize('viewAny', Section::class);
-
-        return Section::all();
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreSectionRequest $request)
-    {
-        Gate::authorize('store', Section::class);
-
-        $section = Section::create($request->validated());
-
-        return new SectionResource($section);
-    }
-
     /**
      * Display the specified resource.
      */

@@ -2,21 +2,13 @@
 
 namespace App\Http\Requests;
 
-use App\Enum\SectionableType;
+use App\Enum\PromptableType;
 use App\Rules\MorphExists;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateSectionRequest extends FormRequest
+class StorePromptRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -26,13 +18,14 @@ class UpdateSectionRequest extends FormRequest
     {
         return [
             'content' => 'required|string',
-            'sectionable_type' => [
+            'application_id' => 'required|exists:applications,id',
+            'promptable_type' => [
                 'nullable',
-                Rule::enum(SectionableType::class),
+                Rule::enum(PromptableType::class),
             ],
-            'sectionable_id' => [
+            'promptable_id' => [
                 'nullable',
-                new MorphExists('sectionable'),
+                new MorphExists('promptable'),
             ],
         ];
     }

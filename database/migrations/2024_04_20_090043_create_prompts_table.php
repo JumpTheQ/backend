@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('prompts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->longText('content')->nullable();
-            $table->integer('version')->nullable();
-            $table->string('sectionable_type');
-            $table->foreignUuid('sectionable_id');
+            $table->longText('content');
+            $table->string('promptable_type');
+            $table->foreignUuid('promptable_id');
             $table->foreignUuid('user_id');
+            $table->foreignUuid('application_id');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('prompts');
     }
 };

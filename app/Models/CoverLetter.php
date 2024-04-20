@@ -14,10 +14,7 @@ class CoverLetter extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'content',
-        'version'
-    ];
+    protected $fillable = [];
 
     public function user()
     {

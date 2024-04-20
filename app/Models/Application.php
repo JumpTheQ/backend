@@ -39,4 +39,9 @@ class Application extends Model
     {
         return $this->hasMany(Resume::class);
     }
+
+    public function prompts()
+    {
+        return $this->hasMany(Prompt::class);
+    }
 }

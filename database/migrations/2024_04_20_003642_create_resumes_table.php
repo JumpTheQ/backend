@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->integer('version')->nullable();
-            $table->jsonb('content')->nullable();
             $table->foreignUuid('user_id');
             $table->foreignUuid('application_id');
             $table->timestamps();

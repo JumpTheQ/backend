@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\UuidForPrimaryKeyTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
@@ -16,7 +15,8 @@ class Section extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'content'
+        'content',
+        'version'
     ];
 
     public function user()
