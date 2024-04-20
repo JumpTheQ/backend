@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->jsonb('keywords')->nullable();
-            $table->foreignUuid('company_id');
+            $table->foreignUuid('company_id')->nullable();
             $table->foreignUuid('user_id');
             $table->timestamps();
         });

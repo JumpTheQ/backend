@@ -7,14 +7,15 @@ use App\Models\CoverLetter;
 use App\Models\Prompt;
 use App\Models\Resume;
 use App\Services\OpenAIService;
+use Illuminate\Support\Facades\Log;
 
 class HandleApplicationSavedAction
 {
     protected $openAiService;
 
-    public function __construct(OpenAIService $openAIService)
+    public function __construct()
     {
-        $this->openAiService = $openAIService;
+        $this->openAiService = new OpenAIService();
     }
 
     public function __invoke(Application $application): void
@@ -32,6 +33,8 @@ class HandleApplicationSavedAction
         $keywords = $this->getKeywordsFromJobDescription($application->description);
 
         $application->updateQuietly(['keywords' => $keywords]);
+
+        $keywords = join(' ', $keywords);
 
         $coverLetterPromptContent = <<<END
             Please write me the most outstanding motivation letter for this job offer: {$application->name}
@@ -52,16 +55,18 @@ class HandleApplicationSavedAction
         ]);
     }
 
-    private function getKeywordsFromJobDescription(string $jobDescription): string
+    private function getKeywordsFromJobDescription(string $jobDescription): array
     {
         $keywordsPrompt = <<<END
-            Find me the most relevant keywords of the following job description: {$jobDescription}
+            Find me the 10 most relevant keywords that I should focus on (while writing my CV and motivation letter),
+            from the following job description: {$jobDescription}
 
-            Please return just a JSON string, which contains the array of the found keywords
+            Please return/answer with just a JSON object, that contains an array called 'keywords' with the found keywords
+            inside
         END;
 
         $jsonString = $this->openAiService->prompt($keywordsPrompt);
 
-        return json_decode($jsonString);
+        return json_decode($jsonString)->{"keywords"};
     }
 }

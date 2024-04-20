@@ -14,7 +14,9 @@ class StoreApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'description' => 'required',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 }

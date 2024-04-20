@@ -15,7 +15,7 @@ class Resume extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [];
+    protected $fillable = ['application_id', 'user_id'];
 
     public function user()
     {

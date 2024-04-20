@@ -17,10 +17,15 @@ class Application extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
+        'name',
         'description',
         'keywords',
-        'company_id'
+        'company_id',
+        'user_id'
+    ];
+
+    protected $casts = [
+        'keywords' => 'json',
     ];
 
     public function user()

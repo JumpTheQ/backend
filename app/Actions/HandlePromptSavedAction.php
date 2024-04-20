@@ -10,9 +10,9 @@ class HandlePromptSavedAction
 {
     protected $openAiService;
 
-    public function __construct(OpenAIService $openAIService)
+    public function __construct()
     {
-        $this->openAiService = $openAIService;
+        $this->openAiService = new OpenAIService();
     }
 
     public function __invoke(Prompt $prompt): void
