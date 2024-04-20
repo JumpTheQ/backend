@@ -15,8 +15,7 @@ class StoreApplicationRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'required',
-            'user_id' => 'required|exists:users,id',
+            'description' => 'required'
         ];
     }
 }
