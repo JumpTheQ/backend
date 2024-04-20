@@ -14,7 +14,7 @@ class ResumeController extends Controller
      */
     public function index(Application $application)
     {
-        return new ResumeResource($application->resumes()->first());
+        return new ResumeResource($application->resumes()->latest()->first());
     }
 
     public function show(Resume $resume)

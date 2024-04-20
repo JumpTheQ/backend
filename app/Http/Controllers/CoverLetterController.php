@@ -14,7 +14,7 @@ class CoverLetterController extends Controller
      */
     public function index(Application $application)
     {
-        return new CoverLetterResource($application->coverLetters()->first());
+        return new CoverLetterResource($application->coverLetters()->latest()->first());
     }
 
     public function show(CoverLetter $coverLetter)
