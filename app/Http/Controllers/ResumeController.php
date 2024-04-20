@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ResumeResource;
 use App\Models\Application;
 use App\Models\Resume;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ResumeController extends Controller
 {
@@ -18,6 +19,8 @@ class ResumeController extends Controller
 
     public function download(Resume $resume)
     {
-        //
+        $pdf = Pdf::loadView('resume', compact('resume'))->download('resume.pdf');
+
+        return response($pdf, 200,['Content-Type' => 'application/pdf']);
     }
 }

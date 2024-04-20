@@ -29,6 +29,6 @@ class CoverLetter extends Model
 
     public function sections()
     {
-        return $this->morphToMany(Section::class, 'sectionable');
+        return $this->morphMany(Section::class, 'sectionable');
     }
 }
