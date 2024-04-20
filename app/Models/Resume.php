@@ -15,7 +15,8 @@ class Resume extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'content'
+        'content',
+        'version'
     ];
 
     public function user()
@@ -26,5 +27,10 @@ class Resume extends Model
     public function application()
     {
         return $this->belongsTo(Application::class);
+    }
+
+    public function sections()
+    {
+        return $this->morphToMany(Section::class, 'sectionable');
     }
 }

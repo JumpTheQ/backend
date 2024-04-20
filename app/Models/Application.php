@@ -29,4 +29,14 @@ class Application extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function coverLetters()
+    {
+        return $this->hasMany(CoverLetter::class);
+    }
+
+    public function resumes()
+    {
+        return $this->hasMany(Resume::class);
+    }
 }

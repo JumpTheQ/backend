@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Traits\UuidForPrimaryKeyTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CoverLetter extends Model
+class Section extends Model
 {
     use UuidForPrimaryKeyTrait;
 
@@ -15,8 +16,7 @@ class CoverLetter extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'content',
-        'version'
+        'content'
     ];
 
     public function user()
@@ -24,13 +24,8 @@ class CoverLetter extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function application()
+    public function sectionable()
     {
-        return $this->belongsTo(Application::class);
-    }
-
-    public function sections()
-    {
-        return $this->morphToMany(Section::class, 'sectionable');
+        return $this->morphTo();
     }
 }
