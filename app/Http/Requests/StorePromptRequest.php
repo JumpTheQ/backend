@@ -18,7 +18,6 @@ class StorePromptRequest extends FormRequest
     {
         return [
             'content' => 'required|string',
-            'application_id' => 'required|exists:applications,id',
             'promptable_type' => [
                 'nullable',
                 Rule::enum(PromptableType::class),

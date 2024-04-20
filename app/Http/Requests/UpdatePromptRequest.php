@@ -18,7 +18,6 @@ class UpdatePromptRequest extends FormRequest
     {
         return [
             'content' => 'required|string',
-            'application_id' => 'filled|exists:applications,id',
             'promptable_type' => [
                 'nullable',
                 Rule::enum(PromptableType::class),
