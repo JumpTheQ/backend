@@ -17,6 +17,11 @@ class CoverLetterController extends Controller
         return CoverLetterResource::colection($application->coverLetters()->get());
     }
 
+    public function show(CoverLetter $coverLetter)
+    {
+        return view('coverLetter', compact('coverLetter'));
+    }
+
     public function download(CoverLetter $coverLetter)
     {
         $pdf = Pdf::loadView('coverLetter', compact('coverLetter'))->download('cover-letter.pdf');

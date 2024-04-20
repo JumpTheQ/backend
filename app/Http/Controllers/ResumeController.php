@@ -17,6 +17,11 @@ class ResumeController extends Controller
         return ResumeResource::collection($application->resumes()->get());
     }
 
+    public function show(Resume $resume)
+    {
+        return view('resume', compact('resume'));
+    }
+
     public function download(Resume $resume)
     {
         $pdf = Pdf::loadView('resume', compact('resume'))->download('resume.pdf');

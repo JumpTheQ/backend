@@ -4,7 +4,8 @@
     <title></title>
 </head>
 <body>
-@foreach ($sections as $section)
+@foreach ($resume->sections()->get() as $section)
+    <p></p>
     <p>{{ $section->content }}</p>
 @endforeach
 </body>

@@ -6,7 +6,7 @@
 <body>
 @foreach ($coverLetter->sections()->get() as $section)
     <p></p>
-    <p>{{ $section['content'] }}</p>
+    <p>{{ $section->content }}</p>
 @endforeach
 </body>
 </html>
