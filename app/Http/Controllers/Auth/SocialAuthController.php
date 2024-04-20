@@ -16,7 +16,7 @@ class SocialAuthController extends Controller
 
     public function linkedinCallback(): \Illuminate\Http\Response
     {
-        $providerUser = Socialite::driver('linkedin')->stateless()->user();
+        $providerUser = Socialite::driver('linkedin-openid')->stateless()->user();
 
         $user = User::firstOrCreate([
             'email' => $providerUser->getEmail(),
