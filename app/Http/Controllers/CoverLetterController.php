@@ -14,7 +14,7 @@ class CoverLetterController extends Controller
      */
     public function index(Application $application)
     {
-        return CoverLetterResource::colection($application->coverLetters()->get());
+        return new CoverLetterResource($application->coverLetters()->first());
     }
 
     public function show(CoverLetter $coverLetter)
@@ -26,6 +26,6 @@ class CoverLetterController extends Controller
     {
         $pdf = Pdf::loadView('coverLetter', compact('coverLetter'))->download('cover-letter.pdf');
 
-        return response($pdf, 200,['Content-Type' => 'application/pdf']);
+        return response($pdf, 200, ['Content-Type' => 'application/pdf']);
     }
 }

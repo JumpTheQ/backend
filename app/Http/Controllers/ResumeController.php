@@ -14,7 +14,7 @@ class ResumeController extends Controller
      */
     public function index(Application $application)
     {
-        return ResumeResource::collection($application->resumes()->get());
+        return new ResumeResource($application->resumes()->first());
     }
 
     public function show(Resume $resume)
@@ -26,6 +26,6 @@ class ResumeController extends Controller
     {
         $pdf = Pdf::loadView('resume', compact('resume'))->download('resume.pdf');
 
-        return response($pdf, 200,['Content-Type' => 'application/pdf']);
+        return response($pdf, 200, ['Content-Type' => 'application/pdf']);
     }
 }
