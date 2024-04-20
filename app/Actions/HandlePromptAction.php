@@ -21,8 +21,12 @@ class HandlePromptAction
                 }
                 $output = $openAI->prompt($prompt->content);
 
-                foreach(explode("\n\n", $output) as $line) {
-                    $promptable->sections()->create(['content' => $line, 'user_id' => $promptable->user_id]);
+                foreach(explode("\n\n", $output) as $index => $line) {
+                    $promptable->sections()->create([
+                        'content' => $line,
+                        'user_id' => $promptable->user_id,
+                        'order' => $index + 1,
+                    ]);
                 }
                 break;
             case PromptableType::SECTION->value:

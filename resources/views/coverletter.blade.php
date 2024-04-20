@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-@foreach ($coverLetter->sections()->get() as $section)
+@foreach ($coverLetter->sections()->orderBy('order', 'asc')->get() as $section)
     <p></p>
     <p>{{ $section->content }}</p>
 @endforeach

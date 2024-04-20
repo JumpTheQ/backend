@@ -9,6 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get('/coverletter/{coverLetter}', [CoverLetterController::class, 'show']);
+Route::get('/coverletter/{coverLetter}/download', [CoverLetterController::class, 'download']);
 Route::get('/resume', [ResumeController::class, 'download']);
 
 require __DIR__.'/auth.php';

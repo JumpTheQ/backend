@@ -17,7 +17,7 @@ class Section extends Model
      */
     protected $fillable = [
         'content',
-        'version',
+        'order',
         'user_id'
     ];
 

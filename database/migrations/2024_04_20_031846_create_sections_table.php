@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->longText('content')->nullable();
-            $table->integer('version')->nullable();
+            $table->integer('order')->nullable();
             $table->string('sectionable_type');
             $table->foreignUuid('sectionable_id');
             $table->foreignUuid('user_id');
