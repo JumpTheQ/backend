@@ -14,7 +14,9 @@ class Resume extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'content'
+    ];
 
     public function user()
     {
