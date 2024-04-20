@@ -11,7 +11,7 @@ class SocialAuthController extends Controller
 {
     public function linkedinLogin(): \Illuminate\Http\JsonResponse
     {
-        return response()->json(Socialite::driver('linkedin')->redirect()->getTargetUrl());
+        return response()->json(Socialite::driver('linkedin-openid')->redirect()->getTargetUrl());
     }
 
     public function linkedinCallback(): \Illuminate\Http\Response
