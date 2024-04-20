@@ -6,8 +6,8 @@ use App\Http\Controllers\PromptController;
 use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('application', ApplicationController::class);
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::apiResource('application', ApplicationController::class);
     Route::apiResource('application.prompt', PromptController::class);
     Route::get('/application/{application}/resume', [ResumeController::class, 'index']);
     Route::get('/application/{application}/resume/{resume}', [ResumeController::class, 'show']);
