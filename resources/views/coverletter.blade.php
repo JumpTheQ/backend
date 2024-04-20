@@ -5,8 +5,7 @@
 </head>
 <body>
 @foreach ($coverLetter->sections()->orderBy('order', 'asc')->get() as $section)
-    <p></p>
-    <p>{{ $section->content }}</p>
+    <p data-section-id="{{ $section->id }}">{{ $section->content }}</p>
 @endforeach
 </body>
 </html>
