@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\UuidForPrimaryKeyTrait;
 use Illuminate\Database\Eloquent\Model;
-use App\Actions\HandlePromptAction;
+use App\Actions\HandlePromptSavedAction;
 
 class Prompt extends Model
 {
@@ -30,10 +30,9 @@ class Prompt extends Model
 
     public static function booted(): void
     {
-        // TODO: Remove me once frontend is integrated
-        static::saving(function ($model) {
-            $handlePromptSavingAction = new HandlePromptAction();
-            $handlePromptSavingAction($model);
+        static::saved(function ($model) {
+            $handlePromptSavedAction = new HandlePromptSavedAction();
+            $handlePromptSavedAction($model);
         });
     }
 }

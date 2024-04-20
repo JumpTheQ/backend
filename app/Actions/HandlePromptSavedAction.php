@@ -6,11 +6,17 @@ use App\Enum\PromptableType;
 use App\Models\Prompt;
 use App\Services\OpenAIService;
 
-class HandlePromptAction
+class HandlePromptSavedAction
 {
+    protected $openAiService;
+
+    public function __construct(OpenAIService $openAIService)
+    {
+        $this->openAiService = $openAIService;
+    }
+
     public function __invoke(Prompt $prompt): void
     {
-        $openAI = new OpenAIService();
         $promptable = $prompt->promptable;
 
         switch ($prompt->promptable_type) {
@@ -19,7 +25,7 @@ class HandlePromptAction
                 foreach($promptable->sections()->get() as $section) {
                     $section->delete();
                 }
-                $output = $openAI->prompt($prompt->content);
+                $output = $this->openAiService->prompt($prompt->content);
 
                 foreach(explode("\n\n", $output) as $index => $line) {
                     $promptable->sections()->create([
@@ -30,7 +36,7 @@ class HandlePromptAction
                 }
                 break;
             case PromptableType::SECTION->value:
-                $output = $openAI->prompt($prompt->content);
+                $output = $this->openAiService->prompt($prompt->content);
                 $promptable->update(['content' => $output]);
                 break;
         }

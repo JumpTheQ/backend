@@ -6,6 +6,7 @@ use App\Http\Requests\StoreApplicationRequest;
 use App\Http\Requests\UpdateApplicationRequest;
 use App\Http\Resources\ApplicationResource;
 use App\Models\Application;
+use App\Models\CoverLetter;
 use Illuminate\Support\Facades\Gate;
 
 class ApplicationController extends Controller
@@ -23,7 +24,7 @@ class ApplicationController extends Controller
      */
     public function store(StoreApplicationRequest $request)
     {
-        $application = Application::create($request->validated());
+        $application = auth()->user()->applications()->create($request->validated());
 
         return new ApplicationResource($application);
     }

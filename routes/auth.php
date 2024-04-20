@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/api/auth')->group(function () {
     Route::get('/me', function () {
-        return new UserResource(auth()->user()->id);
+        return new UserResource(auth()->user());
     })->middleware(['auth:sanctum'])->name('me');
 
     Route::post('/register', [RegisteredUserController::class, 'store'])

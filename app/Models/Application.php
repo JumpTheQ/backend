@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Actions\HandleApplicationSavedAction;
 use App\Traits\UuidForPrimaryKeyTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,7 @@ class Application extends Model
     protected $fillable = [
         'title',
         'description',
+        'keywords',
         'company_id'
     ];
 
@@ -44,5 +46,13 @@ class Application extends Model
     public function prompts()
     {
         return $this->hasMany(Prompt::class);
+    }
+
+    public static function booted(): void
+    {
+        static::saved(function ($model) {
+            $handleApplicationSavedAction = new HandleApplicationSavedAction();
+            $handleApplicationSavedAction($model);
+        });
     }
 }
