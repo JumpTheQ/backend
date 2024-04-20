@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'about',
         'ambitions',
+        'skills',
         'email_verified_at'
     ];
 
@@ -37,7 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $casts = [
-        'skills' => 'json',
+        'skills' => 'array',
     ];
 
     /**

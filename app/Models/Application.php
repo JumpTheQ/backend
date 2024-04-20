@@ -25,7 +25,7 @@ class Application extends Model
     ];
 
     protected $casts = [
-        'keywords' => 'json',
+        'keywords' => 'array',
     ];
 
     public function user()
