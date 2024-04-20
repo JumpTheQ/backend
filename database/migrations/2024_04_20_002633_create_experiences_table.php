@@ -15,8 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('company');
             $table->longText('description')->nullable();
-            $table->dateTime('start_date')();
-            $table->dateTime('end_date')->nullable();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->foreignUuid('company_id');
             $table->foreignUuid('user_id');
             $table->timestamps();
