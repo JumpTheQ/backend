@@ -36,8 +36,8 @@ class HandleApplicationSavedAction
 
         $userAbout = $application->user->about;
         $userAmbitions = $application->user->ambitions;
-        $userSkills = join(' ', $application->user->skills);
-        $applicationKeywords = join(' ', $keywords);
+        $userSkills = join(' ', $application->user->skills ?? []);
+        $applicationKeywords = join(' ', $keywords ?? []);
 
         $coverLetterPromptContent = <<<END
             Please write me the most outstanding motivation letter for this job offer: {$application->name}
