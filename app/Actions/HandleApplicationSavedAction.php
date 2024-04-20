@@ -34,16 +34,25 @@ class HandleApplicationSavedAction
 
         $application->updateQuietly(['keywords' => $keywords]);
 
-        $keywords = join(' ', $keywords);
+        $userAbout = $application->user->about;
+        $userAmbitions = $application->user->ambitions;
+        $userSkills = join($application->user->skills);
+        $applicationKeywords = join(' ', $keywords);
 
         $coverLetterPromptContent = <<<END
             Please write me the most outstanding motivation letter for this job offer: {$application->name}
 
-            This is something that describes me quite well: {$application->user->about}
+            First, let me walk you through some of the most relevant things about me.
 
-            This is my ambition: {$application->user->about}
+            This describes me quite well: {$userAbout}
 
-            And I want you to focus on these relevant keywords that I took out of the job description: {$keywords}
+            These are my ambitions: {$userAmbitions}
+
+            These are my best skills: {$userSkills}
+
+            Now, with all the personal information you have from me, I want you to leverage the following
+            keywords I took out from the job description ({$applicationKeywords}), and write me a stellar
+            motivation letter that will help me get me this job.
         END;
 
         Prompt::create([
