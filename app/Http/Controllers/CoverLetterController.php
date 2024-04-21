@@ -17,12 +17,12 @@ class CoverLetterController extends Controller
         return new CoverLetterResource($application->coverLetters()->latest()->first());
     }
 
-    public function show(CoverLetter $coverLetter)
+    public function show(Application $application, CoverLetter $coverLetter)
     {
         return view('coverLetter', ['coverLetter' => $coverLetter]);
     }
 
-    public function download(CoverLetter $coverLetter)
+    public function download(Application $application, CoverLetter $coverLetter)
     {
         $pdf = Pdf::loadView('coverLetter', ['coverLetter' => $coverLetter])->download('cover-letter.pdf');
 
