@@ -19,12 +19,12 @@ class CoverLetterController extends Controller
 
     public function show(CoverLetter $coverLetter)
     {
-        return view('coverLetter', compact('coverLetter'));
+        return view('coverLetter', ['coverLetter' => $coverLetter]);
     }
 
     public function download(CoverLetter $coverLetter)
     {
-        $pdf = Pdf::loadView('coverLetter', compact('coverLetter'))->download('cover-letter.pdf');
+        $pdf = Pdf::loadView('coverLetter', ['coverLetter' => $coverLetter])->download('cover-letter.pdf');
 
         return response($pdf, 200, ['Content-Type' => 'application/pdf']);
     }
