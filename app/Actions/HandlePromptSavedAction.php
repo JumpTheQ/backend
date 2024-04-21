@@ -40,6 +40,7 @@ class HandlePromptSavedAction
                     'user_id' => $promptable->user_id,
                     'order' => 1,
                 ]);
+                break;
             case PromptableType::COVERLETTER->value:
                 foreach($promptable->sections()->get() as $section) {
                     $section->delete();
@@ -49,6 +50,7 @@ class HandlePromptSavedAction
                 foreach(explode("\n\n", $output) as $index => $line) {
                     $promptable->sections()->create([
                         'content' => $line,
+                        'type' => 'paragraph',
                         'user_id' => $promptable->user_id,
                         'order' => $index + 1,
                     ]);

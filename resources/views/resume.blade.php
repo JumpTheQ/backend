@@ -92,7 +92,7 @@
                             <div class="email">{{ $user->email }}</div>
                             @if($skills)
                                 <div class="skills" data-section-id="{{ $skills->id }}">
-                                    {{ $skills }}
+                                    {{ $skills->content }}
                                 </div>
                             @endif
                         </div>
@@ -100,7 +100,7 @@
                     <td style="vertical-align: top">
                         @if($about)
                         <div class="about" data-section-id="{{ $about->id }}">
-                            {{ $about }}
+                            {{ $about->content }}
                         </div>
                         @endif
                     </td>
