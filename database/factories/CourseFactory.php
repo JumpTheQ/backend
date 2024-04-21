@@ -7,9 +7,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Experience>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
  */
-class ExperienceFactory extends Factory
+class CourseFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,11 +19,11 @@ class ExperienceFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->jobTitle(),
+            'name' => fake()->jobTitle(),
             'description' => fake()->paragraph(),
             'start_date' => fake()->date(),
             'end_date' => fake()->date(),
-            'company_name' => fake()->company(),
+            'institution' => fake()->company(),
             'user_id' => User::factory(),
         ];
     }
