@@ -90,11 +90,11 @@
                         <div class="info">
                             <div class="name">{{ $user->name }}</div>
                             <div class="email">{{ $user->email }}</div>
+                            @if($skills)
                             <div class="skills" data-section-id="{{ $skills->id }}">
-                                @foreach($skills as $skill)
-                                    <span>#{{ $skill }}</span>
-                                @endforeach
+                                {{ $skills }}
                             </div>
+                            @endif
                         </div>
                     </td>
                     <td style="vertical-align: top">
