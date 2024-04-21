@@ -12,7 +12,7 @@ class ExperiencePolicy
      */
     public function view(User $user, Experience $experience): bool
     {
-        return $user->id === $experience->user()->id;
+        return $user->id === $experience->user->id;
     }
 
     /**
@@ -20,7 +20,7 @@ class ExperiencePolicy
      */
     public function update(User $user, Experience $experience): bool
     {
-        return $user->id === $experience->user()->id;
+        return $user->id === $experience->user->id;
     }
 
     /**
@@ -28,6 +28,6 @@ class ExperiencePolicy
      */
     public function delete(User $user, Experience $experience): bool
     {
-        return $user->id === $experience->user()->id;
+        return $user->id === $experience->user->id;
     }
 }

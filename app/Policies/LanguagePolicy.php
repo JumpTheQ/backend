@@ -12,7 +12,7 @@ class LanguagePolicy
      */
     public function view(User $user, Language $language): bool
     {
-        return $user->id === $language->user()->id;
+        return $user->id === $language->user->id;
     }
 
     /**
@@ -20,7 +20,7 @@ class LanguagePolicy
      */
     public function update(User $user, Language $language): bool
     {
-        return $user->id === $language->user()->id;
+        return $user->id === $language->user->id;
     }
 
     /**
@@ -28,6 +28,6 @@ class LanguagePolicy
      */
     public function delete(User $user, Language $language): bool
     {
-        return $user->id === $language->user()->id;
+        return $user->id === $language->user->id;
     }
 }

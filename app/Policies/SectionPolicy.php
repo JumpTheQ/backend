@@ -12,7 +12,7 @@ class SectionPolicy
      */
     public function view(User $user, Section $section): bool
     {
-        return $user->id === $section->user()->id;
+        return $user->id === $section->user->id;
     }
 
     /**
@@ -20,7 +20,7 @@ class SectionPolicy
      */
     public function update(User $user, Section $section): bool
     {
-        return $user->id === $section->user()->id;
+        return $user->id === $section->user->id;
     }
 
     /**
@@ -28,6 +28,6 @@ class SectionPolicy
      */
     public function delete(User $user, Section $section): bool
     {
-        return $user->id === $section->user()->id;
+        return $user->id === $section->user->id;
     }
 }

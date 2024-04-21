@@ -12,7 +12,7 @@ class ApplicationPolicy
      */
     public function view(User $user, Application $application): bool
     {
-        return $user->id === $application->user()->id;
+        return $user->id === $application->user->id;
     }
 
     /**
@@ -20,7 +20,7 @@ class ApplicationPolicy
      */
     public function update(User $user, Application $application): bool
     {
-        return $user->id === $application->user()->id;
+        return $user->id === $application->user->id;
     }
 
     /**
@@ -28,6 +28,6 @@ class ApplicationPolicy
      */
     public function delete(User $user, Application $application): bool
     {
-        return $user->id === $application->user()->id;
+        return $user->id === $application->user->id;
     }
 }
