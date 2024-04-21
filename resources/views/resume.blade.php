@@ -118,7 +118,7 @@
                     <div class="mb-4">
                         <div><strong>{{ $experience['title'] }} @ {{ $experience['company'] }}</strong></div>
                         <div class="mb-2">{{ $experience['start_date'] }} to {{ $experience['end_date'] }}</div>
-                        @if(array_key_exists('description', $experience))<div>{{ $experience['description'] }}</div>@endif
+                        @if($experience['description'])<div>{{ $experience['description'] }}</div>@endif
                     </div>
                 @endforeach
             </div>
