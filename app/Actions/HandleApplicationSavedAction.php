@@ -59,9 +59,23 @@ class HandleApplicationSavedAction
             'content' => $coverLetterPromptContent,
             'application_id' => $application->id,
             'user_id' => $application->user_id,
+            'generated' => true,
             'promptable_id' => $coverLetter->id,
             'promptable_type' => CoverLetter::class,
         ]);
+
+        /* $resumePromptContent = <<<END
+
+END;
+
+        Prompt::create([
+            'content' => $resumePromptContent,
+            'application_id' => $application->id,
+            'user_id' => $application->user_id,
+            'generated' => true,
+            'promptable_id' => $resume->id,
+            'promptable_type' => Resume::class,
+        ]);*/
     }
 
     private function getKeywordsFromJobDescription(string $jobDescription): array

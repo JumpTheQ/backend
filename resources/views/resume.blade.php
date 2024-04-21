@@ -90,7 +90,7 @@
                         <div class="info">
                             <div class="name">{{ $user->name }}</div>
                             <div class="email">{{ $user->email }}</div>
-                            <div class="skills">
+                            <div class="skills" data-section-id="{{ $skills->id }}">
                                 @foreach($skills as $skill)
                                     <span>#{{ $skill }}</span>
                                 @endforeach
@@ -98,7 +98,7 @@
                         </div>
                     </td>
                     <td style="vertical-align: top">
-                        <div class="about">
+                        <div class="about" data-section-id="{{ $about->id }}">
                             {{ $about }}
                         </div>
                     </td>

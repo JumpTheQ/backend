@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignUuid('promptable_id')->nullable();
             $table->foreignUuid('user_id');
             $table->foreignUuid('application_id');
+            $table->boolean('generated')->default(false);
             $table->timestamps();
         });
     }

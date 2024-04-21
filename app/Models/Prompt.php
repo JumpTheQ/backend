@@ -19,6 +19,7 @@ class Prompt extends Model
         'content',
         'application_id',
         'user_id',
+        'generated',
         'promptable_id',
         'promptable_type'
     ];

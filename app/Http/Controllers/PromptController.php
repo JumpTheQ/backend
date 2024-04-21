@@ -19,7 +19,7 @@ class PromptController extends Controller
     {
         Gate::authorize('viewAny', $application);
 
-        return PromptResource::collection($application->prompts());
+        return PromptResource::collection($application->prompts()->where('generated', '=', false)->get());
     }
 
     /**
