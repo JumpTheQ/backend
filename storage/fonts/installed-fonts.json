@@ -1,0 +1,11 @@
+{
+    "montserrat": {
+        "100": "\/var\/www\/html\/storage\/fonts\/montserrat_100_8f13b7194e62e482d8c24b03ff8dd4ef",
+        "200": "\/var\/www\/html\/storage\/fonts\/montserrat_200_5dad4b8f7dbbffc9afd538576341d998",
+        "300": "\/var\/www\/html\/storage\/fonts\/montserrat_300_42bfbacdc9351181ebb8dc29d0261ac2",
+        "normal": "\/var\/www\/html\/storage\/fonts\/montserrat_normal_676431fd5d218b739c7678c3eecff49f",
+        "500": "\/var\/www\/html\/storage\/fonts\/montserrat_500_c09ebcb5be7d5b5329cf75af0e7c1fe2",
+        "600": "\/var\/www\/html\/storage\/fonts\/montserrat_600_12369627c9ef607f78fbd938011807e7",
+        "bold": "montserrat_bold_d25b7f2aa14df3e61a7732d628b71569"
+    }
+}
