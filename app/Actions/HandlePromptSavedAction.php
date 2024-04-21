@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Enum\PromptableType;
 use App\Models\Prompt;
 use App\Services\OpenAIService;
+use Illuminate\Support\Facades\Log;
 
 class HandlePromptSavedAction
 {
@@ -26,13 +27,15 @@ class HandlePromptSavedAction
                 }
                 $jsonString = $this->openAiService->prompt($prompt->content);
                 $promptable->sections()->create([
-                    'content' => json_decode($jsonString)->{'skills'},
+                    'content' => join(' ', array_map(function ($item) {
+                        return "#{$item}";
+                    }, json_decode($jsonString)->{"skills"})),
                     'type' => 'skills',
                     'user_id' => $promptable->user_id,
                     'order' => 0,
                 ]);
                 $promptable->sections()->create([
-                    'content' => json_decode($jsonString)->{'about'},
+                    'content' => json_decode($jsonString)->{"about"},
                     'type' => 'about',
                     'user_id' => $promptable->user_id,
                     'order' => 1,
