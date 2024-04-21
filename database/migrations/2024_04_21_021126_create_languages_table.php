@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('experiences', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title');
-            $table->longText('description')->nullable();
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
-            $table->string('company_name')->nullable();
-            $table->foreignUuid('company_id')->nullable();
+            $table->string('name');
+            $table->string('level');
             $table->foreignUuid('user_id');
             $table->timestamps();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('experiences');
+        Schema::dropIfExists('languages');
     }
 };

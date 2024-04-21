@@ -60,6 +60,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Experience::class);
     }
 
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    public function languages()
+    {
+        return $this->hasMany(Language::class);
+    }
+
     public function applications()
     {
         return $this->hasMany(Application::class);

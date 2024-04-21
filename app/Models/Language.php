@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use App\Traits\UuidForPrimaryKeyTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Experience extends Model
+class Language extends Model
 {
-    use UuidForPrimaryKeyTrait, HasFactory;
+    use UuidForPrimaryKeyTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -16,21 +15,13 @@ class Experience extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'description',
-        'start_date',
-        'end_date',
-        'company_name',
+        'name',
+        'level',
         'user_id'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
     }
 }

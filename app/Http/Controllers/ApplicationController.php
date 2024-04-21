@@ -6,7 +6,6 @@ use App\Http\Requests\StoreApplicationRequest;
 use App\Http\Requests\UpdateApplicationRequest;
 use App\Http\Resources\ApplicationResource;
 use App\Models\Application;
-use App\Models\CoverLetter;
 use Illuminate\Support\Facades\Gate;
 
 class ApplicationController extends Controller
