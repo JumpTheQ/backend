@@ -39,7 +39,7 @@
         }
 
         .container {
-            max-width: 720px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -57,13 +57,10 @@
         .section__header__separator {
             display: block;
             width: 100%;
-            margin-top: 14px;
+            margin-top: 8px;
             border: 1px solid #F2E9F4;
         }
 
-        .flex {
-            display: flex;
-        }
         .py-6 {
             padding: 24px 0;
         }
@@ -83,7 +80,7 @@
         <div class="container py-6">
             <table>
                 <tr>
-                    <td style="vertical-align: top">
+                    <td style="vertical-align: top; width: 80px;">
                         <img src="{{ $user->avatar_url }}" alt="" class="avatar">
                     </td>
                     <td style="vertical-align: top">
