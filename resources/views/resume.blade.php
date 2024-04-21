@@ -91,16 +91,18 @@
                             <div class="name">{{ $user->name }}</div>
                             <div class="email">{{ $user->email }}</div>
                             @if($skills)
-                            <div class="skills" data-section-id="{{ $skills->id }}">
-                                {{ $skills }}
-                            </div>
+                                <div class="skills" data-section-id="{{ $skills->id }}">
+                                    {{ $skills }}
+                                </div>
                             @endif
                         </div>
                     </td>
                     <td style="vertical-align: top">
+                        @if($about)
                         <div class="about" data-section-id="{{ $about->id }}">
                             {{ $about }}
                         </div>
+                        @endif
                     </td>
                 </tr>
             </table>
