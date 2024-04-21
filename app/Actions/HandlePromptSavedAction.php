@@ -57,7 +57,13 @@ class HandlePromptSavedAction
                 }
                 break;
             case PromptableType::SECTION->value:
-                $output = $this->openAiService->prompt($prompt->content);
+                $promptContent = <<<END
+                Everything that I'm about to say, is related to this content: {$promptable->content}
+
+                {$prompt->content}
+END;
+
+                $output = $this->openAiService->prompt($promptContent);
                 $promptable->update(['content' => $output]);
                 break;
         }

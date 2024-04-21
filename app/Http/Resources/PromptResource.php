@@ -16,7 +16,8 @@ class PromptResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'content' => $this->content
+            'content' => $this->content,
+            'promptable' => $this->promptable
         ];
     }
 }

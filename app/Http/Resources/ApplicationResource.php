@@ -18,7 +18,8 @@ class ApplicationResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'keywords' => $this->keywords
+            'keywords' => $this->keywords,
+            'created_at' => $this->created_at
         ];
     }
 }

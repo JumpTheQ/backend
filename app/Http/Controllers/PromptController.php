@@ -17,7 +17,7 @@ class PromptController extends Controller
      */
     public function index(Application $application)
     {
-        Gate::authorize('viewAny', $application);
+        Gate::authorize('viewAny', [Prompt::class, $application]);
 
         return PromptResource::collection($application->prompts()->where('generated', '=', false)->get());
     }
@@ -27,10 +27,14 @@ class PromptController extends Controller
      */
     public function store(StorePromptRequest $request, Application $application)
     {
-        Gate::authorize('create', $application);
+        Gate::authorize('create', [Prompt::class, $application]);
 
         /** @var Prompt $prompt */
-        $prompt = $application->prompts()->create($request->validated());
+        $prompt = $application->prompts()->make($request->validated());
+
+        $prompt->user_id = auth()->user()->id;
+
+        $prompt->save();
 
         return new PromptResource($prompt);
     }

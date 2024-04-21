@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Application;
 use App\Models\Prompt;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class PromptPolicy
 {
@@ -22,14 +23,6 @@ class PromptPolicy
     public function view(User $user, Prompt $prompt): bool
     {
         return $user->id === $prompt->user_id;
-    }
-
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user, Application $application): bool
-    {
-        return $user->id === $application->user_id;
     }
 
     /**
