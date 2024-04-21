@@ -16,8 +16,7 @@ class SectionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'sections' => SectionResource::collection($this->sections)
+            'content' => $this->content
         ];
     }
 }
