@@ -16,7 +16,7 @@ class CoverLetterResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'sections' => SectionResource::collection($this->sections),
+            'sections' => SectionResource::collection($this->sections()->orderBy('order')->get()),
         ];
     }
 }
