@@ -18,7 +18,7 @@ class ResumeController extends Controller
         return new ResumeResource($application->resumes()->latest()->first());
     }
 
-    public function show(Resume $resume)
+    public function show(Application $application, Resume $resume)
     {
         return view('resume', [
             'resume' => $resume,
@@ -32,7 +32,7 @@ class ResumeController extends Controller
         ]);
     }
 
-    public function download(Resume $resume)
+    public function download(Application $application, Resume $resume)
     {
         $pdf = Pdf::loadView('resume', [
             'resume' => $resume,
