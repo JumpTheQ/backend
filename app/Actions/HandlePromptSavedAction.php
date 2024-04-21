@@ -21,6 +21,22 @@ class HandlePromptSavedAction
 
         switch ($prompt->promptable_type) {
             case PromptableType::RESUME->value:
+                foreach($promptable->sections()->get() as $section) {
+                    $section->delete();
+                }
+                $jsonString = $this->openAiService->prompt($prompt->content);
+                $promptable->sections()->create([
+                    'content' => json_decode($jsonString)->{'skills'},
+                    'type' => 'skills',
+                    'user_id' => $promptable->user_id,
+                    'order' => 0,
+                ]);
+                $promptable->sections()->create([
+                    'content' => json_decode($jsonString)->{'about'},
+                    'type' => 'about',
+                    'user_id' => $promptable->user_id,
+                    'order' => 1,
+                ]);
             case PromptableType::COVERLETTER->value:
                 foreach($promptable->sections()->get() as $section) {
                     $section->delete();
