@@ -116,7 +116,7 @@
                 </table>
                 @foreach($experiences as $experience)
                     <div class="mb-4">
-                        <div><strong>{{ $experience['title'] }} @ {{ $experience['company'] }}</strong></div>
+                        <div><strong>{{ $experience['title'] }} @ {{ $experience['company_name'] }}</strong></div>
                         <div class="mb-2">{{ $experience['start_date'] }} to {{ $experience['end_date'] }}</div>
                         @if($experience['description'])<div>{{ $experience['description'] }}</div>@endif
                     </div>
@@ -133,6 +133,7 @@
                 @foreach($courses as $course)
                     <div class="mb-4">
                         <div><strong>{{ $course['name'] }}</strong></div>
+                        <div class="mb-2">{{ $course['institution'] }}</div>
                         <div class="mb-2">{{ $course['start_date'] }} to {{ $course['end_date'] }}</div>
                         @if($course['description'])<div>{{ $course['description'] }}</div>@endif
                     </div>
