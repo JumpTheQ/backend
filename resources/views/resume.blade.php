@@ -134,7 +134,7 @@
                     <div class="mb-4">
                         <div><strong>{{ $course['name'] }}</strong></div>
                         <div class="mb-2">{{ $course['start_date'] }} to {{ $course['end_date'] }}</div>
-                        @if(array_key_exists('description', $course))<div>{{ $course['description'] }}</div>@endif
+                        @if($course['description'])<div>{{ $course['description'] }}</div>@endif
                     </div>
                 @endforeach
             </div>
@@ -151,23 +151,6 @@
                     <div><strong>{{ $language['name'] }}</strong> - {{ $language['level'] }}</div>
                 @endforeach
             </div>
-            @endif
-            @if(!empty($other))
-                <div class="section">
-                    <table class="w-full mb-4">
-                        <tr>
-                            <td style="width: 86px"><div class="section__header">Other info</div></td>
-                            <td><hr class="section__header__separator" /></td>
-                        </tr>
-                    </table>
-                </div>
-                @foreach($other as $item)
-                    <div class="mb-4">
-                        <div><strong>{{ $item['title'] }} @ {{ $item['company'] }}</strong></div>
-                        <div class="mb-2">{{ $item['start_date'] }} to {{ $item['end_date'] }}</div>
-                        @if(array_key_exists('description', $item))<div>{{ $item['description'] }}</div>@endif
-                    </div>
-                @endforeach
             @endif
         </div>
     </div>
