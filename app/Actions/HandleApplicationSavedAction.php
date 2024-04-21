@@ -98,7 +98,7 @@ END;
     private function getKeywordsFromJobDescription(string $jobDescription): array
     {
         $keywordsPrompt = <<<END
-            Find me the 10 most relevant keywords that I should focus on (while writing my CV and motivation letter),
+            Find me up to 10 keywords that best represent what I should focus on while writing my CV and motivation letter,
             from the following job description: {$jobDescription}
 
             Please return/answer with just a JSON object, that contains an array called 'keywords' with the found keywords
